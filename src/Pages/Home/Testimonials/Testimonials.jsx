@@ -1,6 +1,7 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Rating } from "@smastrom/react-rating";
+import coma from '../../../assets/icon/quotation-mark.png'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -25,7 +26,7 @@ const Testimonials = () => {
     }, [])
 
     return (
-        <section className="my-20">
+        <section className="my-10 md:my-20 inter">
             <SectionTitle
                 subHeading="What Our Client say"
                 heading="Testimonials"
@@ -36,12 +37,13 @@ const Testimonials = () => {
                     reviews.map(review => <SwiperSlide
                         key={review._id}
                     >
-                        <div className=" flex flex-col items-center mx-24 my-16">
+                        <div className=" flex flex-col items-center mx-12 md:mx-24 mt-7 md:my-8">
                             <Rating
                                 style={{ maxWidth: 180 }}
                                 value={review.rating}
                                 readOnly
                             />
+                            <img src={coma} className="w-12 h-10 md:w-24 md:h-20 mx-[46%] mt-6 md:mt-6" alt="" />
                             <p className="py-8">{review.details}</p>
                             <h3 className="text-2xl text-orange-400">{review.name}</h3>
                         </div>
