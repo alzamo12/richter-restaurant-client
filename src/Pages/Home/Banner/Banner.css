@@ -1,0 +1,28 @@
+.thumbs{
+    margin-left: 40%;
+    margin-top: 20px;
+}
+
+.thumb{
+    height: 60px;
+}
+
+@media only screen and (max-width: 512px){
+    .thumb{
+        height: auto;
+    }
+    .thumbs{
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 1279px){
+    .thumbs{
+        margin-left: 25%;
+        margin-right: 25%;
+        /* display: flex ;
+        justify-items: center;
+        align-items: center;
+        margin: auto; */
+    }
+}

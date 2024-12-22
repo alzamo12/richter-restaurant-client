@@ -71,7 +71,7 @@ const NavBar = () => {
                             {navOptions}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-3xl inter font-extrabold ">Richter Restaurant</a>
+                    <a className="btn btn-ghost text-3xl cinzel font-extrabold ">Richter Restaurant</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 uppercase inter font-extrabold">

@@ -4,21 +4,21 @@ import './featured.css'
 
 const Featured = () => {
     return (
-        <div className="featured-item hero justify-center place-items-stretch bg-fixed text-white   my-20 ">
+        <div className="featured-item hero justify-center place-items-stretch bg-fixed text-white  my-8 md:my-20 ">
               <div className=" hero-overlay bg-opacity-60"></div>
             <SectionTitle
             subHeading="check it out"
             heading="Featured Item"
             ></SectionTitle>
-            <div className="md:flex justify-center items-center mt-40 pb-20 pt-12 px-36">
+            <div className="md:flex justify-center items-center mt-32 md:mt-40 pb-10 md:pb-20 pt-12 px-8 md:px-36">
                 <div>
-                    <img src={featuredImg} alt="" />
+                    <img className="w-[50%] lg:w-auto" src={featuredImg} alt="" />
                 </div>
-                <div className="md:ml-10 ">
+                <div className="md:ml-10 mt-6 md:mt-0">
                     <p>Aug 2, 2029</p>
                     <p className="uppercase">Where can i get some?</p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident velit enim consequatur? Reprehenderit id dolores fugit, assumenda ex quis officia doloremque impedit architecto debitis deserunt, facere dolore unde minus porro.</p>
-                    <button className="btn btn-outline border-b-2 border-black border-0 text-white">Order Now</button>
+                    <p className="text-[12px] md:text-xl">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident velit enim consequatur? Reprehenderit id dolores fugit, assumenda ex quis officia doloremque impedit architecto debitis deserunt, facere dolore unde minus porro.</p>
+                    <button className="btn btn-outline border-b-2 border-black border-0  text-white">Order Now</button>
                 </div>
             </div>
         </div>

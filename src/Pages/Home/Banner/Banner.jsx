@@ -6,34 +6,31 @@ import img3 from '../../../assets/home/03.png'
 import img4 from '../../../assets/home/04.jpg'
 import img5 from '../../../assets/home/05.png'
 import img6 from '../../../assets/home/06.png'
+import './Banner.css'
 const Banner = () => {
     return (
-        <Carousel> 
-            <div>
-                <img src={img1} />
-                <p className="legend">Legend 1</p>
-            </div>
-            <div>
-                <img src={img2} />
-                <p className="legend">Legend 2</p>
-            </div>
-            <div>
-                <img src={img3} />
-                <p className="legend">Legend 3</p>
-            </div>
-            <div>
-                <img src={img4} />
-                <p className="legend">Legend 3</p>
-            </div>
-            <div>
-                <img src={img5} />
-                <p className="legend">Legend 3</p>
-            </div>
-            <div>
-                <img src={img6} />
-                <p className="legend">Legend 3</p>
-            </div>
-        </Carousel>
+        <div className="w-[99.5vw] lg:h-[95vh] relative left-1/2 right-1/2 -mx-[50vw]  ">
+            <Carousel className="">
+                <div className="lg:h-[85vh]">
+                    <img className="h-full" src={img1} />
+                </div>
+                <div className="lg:h-[85vh]">
+                    <img className="h-full" src={img2} />
+                </div>
+                <div className="lg:h-[85vh]">
+                    <img className="h-full" src={img3} />
+                </div>
+                <div className="lg:h-[85vh]">
+                    <img className="h-full" src={img4} />
+                </div>
+                <div className="lg:h-[85vh]">
+                    <img className="h-full" src={img5} />
+                </div>
+                <div className="lg:h-[85vh]">
+                    <img className="h-full" src={img6} />
+                </div>
+            </Carousel>
+        </div>
     );
 };
 

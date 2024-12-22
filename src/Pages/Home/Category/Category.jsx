@@ -17,7 +17,7 @@ const Category = () => {
 
 
     return (
-        <section className='inter md:mt-24'>
+        <section className='inter md:mt-20'>
             <SectionTitle
                 subHeading={"From 11.00am to 10.00 pm"}
                 heading={"Order Online"}
