@@ -23,15 +23,21 @@ const Menu = () => {
             <Helmet>
                 <title>Richter | Menu</title>
             </Helmet>
+
             <Cover fontStyle={`cover-text-class-header`} img={menuImg} title="Our Menu"
                 description=" Would you like to try a dish?"
             ></Cover>
+
             <SectionTitle
                 subHeading="Don't Miss"
                 heading="Today's Offer"
             ></SectionTitle>
+            
             {/* offered */}
-            <MenuCategory items={offered}></MenuCategory>
+            <MenuCategory
+                items={offered}>
+            </MenuCategory>
+
             {/* salads */}
             <MenuCategory
                 img={saladImg}
@@ -47,6 +53,7 @@ const Menu = () => {
                 items={pizza}
                 description="Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
             ></MenuCategory>
+
             {/* desserts */}
             <MenuCategory
                 img={dessertImg}
@@ -54,6 +61,7 @@ const Menu = () => {
                 items={deserts}
                 description="Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
             ></MenuCategory>
+
             {/* soups */}
             <MenuCategory
                 img={soupImg}

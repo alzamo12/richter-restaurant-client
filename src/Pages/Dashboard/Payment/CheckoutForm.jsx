@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useCart from '../../../hooks/useCart';
 import useAuth from '../../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const CheckoutForm =  () => {
     // const navigate = useNavigate()

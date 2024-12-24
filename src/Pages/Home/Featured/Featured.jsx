@@ -1,6 +1,7 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import featuredImg from '../../../assets/home/featured.jpg'
 import './featured.css'
+import CenteredBtn from "../../../components/CenteredBtn/CenteredBtn";
 
 const Featured = () => {
     return (
@@ -19,6 +20,7 @@ const Featured = () => {
                     <p className="uppercase">Where can i get some?</p>
                     <p className="text-[12px] md:text-xl">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident velit enim consequatur? Reprehenderit id dolores fugit, assumenda ex quis officia doloremque impedit architecto debitis deserunt, facere dolore unde minus porro.</p>
                     <button className="btn btn-outline border-b-2 border-white border-0 inter font-semibold text-white">Order Now</button>
+                    {/* <CenteredBtn buttonText='Order Now'></CenteredBtn> */}
                 </div>
             </div>
         </div>

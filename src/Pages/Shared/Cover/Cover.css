@@ -1,0 +1,42 @@
+/* cover-text-class-header */
+.cover-text-class-header {
+    font-family: "Cinzel", serif;
+}
+
+.cover-text-class-header  h1{
+ font-size: 88px;
+}
+.cover-text-class-header  p{
+ font-size: 24px;
+}
+
+/* cover-text-class-food */
+.cover-text-class-food  h1{
+ font-size: 45px;
+ margin-bottom: 10px;
+ font-family: "Cinzel", serif
+}
+.cover-text-class-food  p{
+    font-size: 14px;
+    /* font-weight: 600; */
+    font-family: "Inter", sans-serif;
+}
+
+
+@media only screen and (max-width: 512px){
+  /* cover  */
+  .cover-text-class-header h1 {
+    font-size: 30px;
+  }
+  .cover-text-class-header p {
+    font-size: 10px;
+  }
+
+  /* food */
+  .cover-text-class-food h1{
+    font-size: 30px;
+  }
+  .cover-text-class-food p{
+    font-size: 10px;
+  }
+}

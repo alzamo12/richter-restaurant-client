@@ -1,25 +1,48 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import orderCover from '../../../assets/shop/banner2.jpg'
 import Cover from '../../Shared/Cover/Cover';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenu from '../../../hooks/useMenu';
-import FoodCard from '../../../components/FoodCard/FoodCard';
 import OrderTab from '../OrderTab/OrderTab';
 import { useParams } from 'react-router';
 import { Helmet } from 'react-helmet-async';
+import './Order.css'
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const Order = () => {
+    const axiosPublic = useAxiosPublic();
     const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks'];
     const { category } = useParams();
     const initialIndex = categories.indexOf(category);
     const [tabIndex, setTabIndex] = useState(initialIndex);
-    const [menu] = useMenu();
-    const deserts = menu.filter(item => item.category === 'dessert');
-    const salad = menu.filter(item => item.category === 'salad');
-    const pizza = menu.filter(item => item.category === 'pizza');
-    const soup = menu.filter(item => item.category === 'soup');
-    const drinks = menu.filter(item => item.category === 'drinks');
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const handlePrev = (prevPage) => {
+        setCurrentPage(prevPage)
+    };
+
+    const handleNext = (nextPage) => {
+        setCurrentPage(nextPage)
+    }
+
+    const currentTabFood = categories[tabIndex];
+    const [prevTabFood, setPrevTabFood] = useState(currentTabFood); // use this to show data properly
+    const { data: menu = [] } = useQuery({
+        queryKey: ['menu', currentTabFood, currentPage],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/menu?category=${currentTabFood}&page=${currentPage}&limit=${5}`);
+            console.log('API Response:', res.data);
+            if (currentTabFood !== prevTabFood) {
+                // set current page 1 and prev food to current tab food 
+                setCurrentPage(1);
+                setPrevTabFood(currentTabFood)
+            }
+            return res.data
+        }
+    });
 
     return (
         <div>
@@ -32,32 +55,38 @@ const Order = () => {
                 title="Our Food"
                 description="Would you like tp try a dish"
             ></Cover>
-            <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-                <TabList className="uppercase">
-                    <Tab>salad</Tab>
-                    <Tab>pizza</Tab>
-                    <Tab>soup</Tab>
-                    <Tab>dessert</Tab>
-                    <Tab>drink</Tab>
+            <Tabs defaultIndex={tabIndex} onSelect={(index) => { setTabIndex(index) }}>
+                <TabList className="uppercase flex gap-4 text-xl inter font-medium mb-10 mx-[35%]">
+                    {/* {
+                        categories.map((tab, index) => <Tab key={index}
+                            className={tabIndex === index ? 'active-tab' : ''}
+                        >{tab}</Tab>)
+                    } */}
+                    <Tab selectedClassName='active-tab'>salad</Tab>
+                    <Tab selectedClassName='active-tab'>pizza</Tab>
+                    <Tab selectedClassName='active-tab'>soup</Tab>
+                    <Tab selectedClassName='active-tab'>dessert</Tab>
+                    <Tab selectedClassName='active-tab'>drink</Tab>
                 </TabList>
 
                 <TabPanel>
-                    <OrderTab items={salad}></OrderTab>
+                    <OrderTab menu={menu} currentPage={currentPage} handlePrev={handlePrev} handleNext={handleNext}></OrderTab>
                 </TabPanel>
                 <TabPanel>
-                    <OrderTab items={pizza}></OrderTab>
+                    <OrderTab menu={menu} currentPage={currentPage} handlePrev={handlePrev} handleNext={handleNext}></OrderTab>
                 </TabPanel>
                 <TabPanel>
-                    <OrderTab items={soup}></OrderTab>
+                    <OrderTab menu={menu} currentPage={currentPage} handlePrev={handlePrev} handleNext={handleNext}></OrderTab>
                 </TabPanel>
                 <TabPanel>
-                    <OrderTab items={deserts}></OrderTab>
+                    <OrderTab menu={menu} currentPage={currentPage} handlePrev={handlePrev} handleNext={handleNext}></OrderTab>
                 </TabPanel>
                 <TabPanel>
-                    <OrderTab items={drinks}></OrderTab>
+                    <OrderTab menu={menu} currentPage={currentPage} handlePrev={handlePrev} handleNext={handleNext}></OrderTab>
                 </TabPanel>
             </Tabs>
         </div>
+
     );
 };
 
