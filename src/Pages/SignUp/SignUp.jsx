@@ -4,7 +4,9 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
-
+import signUpImg from '../../assets/others/authentication2.png'
+import './signUp.css'
+import { Link, useLocation } from "react-router";
 
 
 const SignUp = () => {
@@ -19,28 +21,31 @@ const SignUp = () => {
     const axiosPublic = useAxiosPublic();
 
     const { createUser, updateUserProfile } = useContext(AuthContext);
+    const location = useLocation();
 
     const onSubmit = data => {
         // console.log()
         createUser(data.email, data.password)
             .then((result) => {
                 const loggedUser = result.user;
-                console.log(loggedUser)
                 updateUserProfile(data.name, data.photoURL)
-                    .then(async (result) => {
+                    .then((result) => {
                         const userInfo = {
                             name: data.name,
-                            email: data.email
+                            email: data.email,
+                            uid: loggedUser.uid
                         }
-                        axiosPublic.post('/users', userInfo)
+                      axiosPublic.post('/users', userInfo)
                             .then(res => {
-                                console.log('user added to the database')
+                                console.log(res.data)
                             })
                     })
-                    .catch(error => console.log(error))
+                    .catch(error => {
+                        console.log(error)
+                    })
             })
             .catch(error => {
-                console.log(error)
+                // console.log(error)
             })
     }
 
@@ -60,18 +65,15 @@ const SignUp = () => {
             <Helmet>
                 <title>Richter | Sign Up</title>
             </Helmet>
-            <div className="hero bg-base-200 min-h-screen">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
-                        <p className="py-6">
-                            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                            quasi. In deleniti eaque aut repudiandae et a id nisi.
-                        </p>
+            <div className="hero min-h-screen auth-background">
+                <div className="hero-content max-w-[85%] w-[85%] px-28 shadow-2xl h-4/5 gap-[5%] flex-col lg:flex-row-reverse">
+                    <div className="text-center md:w-1/2 lg:text-left">
+                        <img className='w-[100%]' src={signUpImg} alt="" />
                     </div>
                     {/* form */}
-                    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                    <div className="card  w-1/2 shrink-0">
+                        <h2 className="text-4xl inter font-bold text-center">Sign Up</h2>
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body w-3/4 mx-auto inter font-semibold text-xl">
                             {/* name */}
                             <div className="form-control">
                                 <label className="label">
@@ -131,10 +133,14 @@ const SignUp = () => {
                             {/* button or submit */}
                             <div className="form-control mt-6">
                                 {/* <button className="btn btn-primary">Login</button> */}
-                                <input className="btn btn-primary" type="submit" value="Sign Up" />
+                                <input className="btn btn-primary bg-[#D1A054] text-white border-none" type="submit" value="Submit" />
                             </div>
                         </form>
-                        <SocialLogin></SocialLogin>
+                        <SocialLogin
+                            message="Already Registered?"
+                            linkMessage="Go to log in"
+                            isLogin={false}
+                        ></SocialLogin>
                     </div>
                 </div>
             </div>

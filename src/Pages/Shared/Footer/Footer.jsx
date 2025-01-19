@@ -2,7 +2,7 @@
 const Footer = () => {
     return (
         <footer >
-            <div className="footer w-[99.5vw] relative left-1/2 right-1/2 -mx-[50vw] mt-8 bg-[#1F2937] text-neutral-content flex md:grid">
+            <div className="footer w-[100vw] relative left-1/2 right-1/2 -mx-[50vw] mt-8 bg-[#1F2937] text-neutral-content flex md:grid">
                 <aside className="w-full h-full md:flex-1 py-4 md:py-20 px-6 lg:px-32 md:justify-end text-white inter font-medium">
                     <h2 className="md:text-3xl  uppercase md:mb-4">Contact us</h2>
                     <div className="text-[8px] md:text-lg md:text-left md:space-y-2">
@@ -52,7 +52,7 @@ const Footer = () => {
                     </div>
                 </nav>
             </div>
-            <div className=" footer-center bg-base-300 text-base-content p-4">
+            <div className=" footer-center relative w-[100vw] left-1/2 right-1/2 -mx-[50vw] bg-base-300 text-base-content p-4">
                 <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
             </div>
         </footer>

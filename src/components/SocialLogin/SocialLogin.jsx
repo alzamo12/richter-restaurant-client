@@ -2,10 +2,10 @@ import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { replace, useLocation, useNavigate } from "react-router";
+import { Link, replace, useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
-const SocialLogin = () => {
+const SocialLogin = ({message, linkMessage, isLogin}) => {
     const { googleSignIn } = useContext(AuthContext);
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
@@ -15,10 +15,10 @@ const SocialLogin = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
-                console.log(result.user)
                 const userInfo = {
                     name: result.user?.displayName,
-                    email: result.user?.email
+                    email: result.user?.email,
+                    isValid: result.user?.emailVerified
                 };
                 axiosPublic.post('/users', userInfo)
                     .then(res => {
@@ -44,16 +44,19 @@ const SocialLogin = () => {
                     })
             })
             .catch(error => {
-                console.log(error)
+                // console.log(error)
             })
     }
 
     return (
-        <div className="ml-4 mt-2">
-            <div className="btn btn-neutral p-4">
-                <button onClick={handleGoogleSignIn} className="flex gap-2">  <FaGoogle></FaGoogle>Google</button>
+       
+            <div className="text-center grid gap-3 inter font-medium ">
+                <p className="text-[#D1A054]">{message} <Link to={isLogin ? '/signup' : '/login' }>{linkMessage}</Link></p>
+                <p>Or {isLogin ? 'sign in with' : 'sign up with'}</p>
+                <button onClick={handleGoogleSignIn} className="btn btn-outline w-12 h-12 mx-auto rounded-full p-4 ">
+                    <FaGoogle></FaGoogle>
+                </button>
             </div>
-        </div>
     );
 };
 

@@ -17,6 +17,10 @@ import Payment from '../Pages/Dashboard/Payment/Payment';
 import PaymentHistory from '../Pages/Dashboard/PaymentHistory/PaymentHistory';
 import UserHome from '../Pages/Dashboard/UserHome/UserHome';
 import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome';
+import Reservation from '../Pages/Dashboard/Rservation/Reservation';
+import MyBookings from '../Pages/Dashboard/MyBookings/MyBookings';
+import AddReview from '../Pages/Dashboard/AddReview/AddReview';
+import Verification from '../Pages/SignUp/Verification';
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +40,9 @@ export const router = createBrowserRouter([
             { path: 'cart', element: <Cart /> },
             { path: 'payment', element: <Payment /> },
             { path: 'history', element: <PaymentHistory /> },
+            { path: 'reservation', element: <Reservation></Reservation> },
+            { path: 'bookings', element: <MyBookings></MyBookings> },
+            {path: 'addReview', element: <AddReview></AddReview>},
             // admin Routes
             { path: 'adminHome', element: <AdminRoute><AdminHome /></AdminRoute> },
             { path: 'users', element: <AdminRoute><AllUsers /></AdminRoute> },
@@ -50,5 +57,6 @@ export const router = createBrowserRouter([
     },
     { path: 'login', element: <Login /> },
     { path: 'signup', element: <SignUp /> },
+    {path: 'verifyEmail', element: <Verification/>}
 ]);
 

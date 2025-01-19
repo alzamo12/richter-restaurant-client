@@ -6,6 +6,7 @@ import CenteredBtn from '../../../components/CenteredBtn/CenteredBtn';
 
 const PopularMenu = () => {
     const [menu] = useMenu();
+
     const popularMenu = menu.filter(item => item.category === 'popular')
     return (
         <section className='md:mx-0 md:mt-20 md:space-y-14 grid justify-center mx-auto'>

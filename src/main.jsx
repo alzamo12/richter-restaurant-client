@@ -19,11 +19,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
-          <div className=''>
+          <div className='overflow-x-hidden'>
             <RouterProvider router={router} />
           </div>
         </QueryClientProvider>
       </HelmetProvider>
     </AuthProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

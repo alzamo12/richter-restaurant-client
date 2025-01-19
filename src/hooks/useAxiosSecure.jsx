@@ -4,8 +4,11 @@ import { MdErrorOutline } from "react-icons/md";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../providers/AuthProvider";
 
+// const token = localStorage.getItem('access-token');
 const axiosSecure = axios.create({
-  baseURL: 'http://localhost:5000'
+  baseURL: 'https://richter-restaurant-server.vercel.app',
+  // baseURL: 'http://localhost:5000',
+  
 })
 const useAxiosSecure = () => {
   const { logOut } = useContext(AuthContext);
@@ -13,7 +16,7 @@ const useAxiosSecure = () => {
 
   axiosSecure.interceptors.request.use(function (config) {
     const token = localStorage.getItem('access-token')
-    console.log('request stopped by interceptors', token)
+    // console.log('request stopped by interceptors', token)
     config.headers.authorization = `Bearer ${token}`;
     return config;
   }, function (error) {

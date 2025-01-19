@@ -5,6 +5,8 @@ import { Link, useLoaderData, useLocation, useNavigate } from 'react-router';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
+import './Login.css'
+import loginImg from '../../assets/others/authentication2.png'
 
 
 const Login = () => {
@@ -14,7 +16,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || '/';
-    console.log( from)
+    // console.log( from)
 
     useEffect(() => {
         loadCaptchaEnginge(6)
@@ -28,9 +30,9 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
+                // console.log(user)
                 Swal.fire({
-                    title: "Custom animation with Animate.css",
+                    title: "You have Successfully Login",
                     showClass: {
                         popup: `
                         animate__animated
@@ -49,13 +51,29 @@ const Login = () => {
                 navigate(from, { replace: true })
             })
             .catch(error => {
-                console.log(error)
+                Swal.fire({
+                    title: "Please Login Again",
+                    showClass: {
+                        popup: `
+                        animate__animated
+                        animate__fadeInUp
+                        animate__faster
+                      `
+                    },
+                    hideClass: {
+                        popup: `
+                        animate__animated
+                        animate__fadeOutDown
+                        animate__faster
+                      `
+                    }
+                });
             })
     };
 
     const handleValidateCaptcha = (e) => {
         const user_captcha_value = e.target.value;
-        console.log(user_captcha_value)
+        // console.log(user_captcha_value)
         if (validateCaptcha(user_captcha_value)) {
             setDisabled(false)
         }
@@ -69,23 +87,20 @@ const Login = () => {
             <Helmet>
                 <title>Richter | Login</title>
             </Helmet>
-            <div className="hero bg-base-200 min-h-screen">
-                <div className="hero-content flex-col md:flex-row-reverse">
+            <div className="hero min-h-screen auth-background">
+                <div className="hero-content px-28 shadow-2xl border-2 h-4/5 max-w-[85%] w-[85%] gap-[20%] flex-col md:flex-row">
                     <div className="text-center md:w-1/2 lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
-                        <p className="py-6">
-                            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                            quasi. In deleniti eaque aut repudiandae et a id nisi.
-                        </p>
+                       <img className='w-[100%]' src={loginImg} alt="" />
                     </div>
-                    <div className="card md:w-1/2 bg-base-100 w-full max-w-sm  shadow-2xl">
-                        <form onSubmit={handleLogin} className="card-body">
+                    <div className="card md:w-1/2  ">
+                    <h2 className="text-4xl inter font-bold text-center">Login</h2>
+                        <form onSubmit={handleLogin} className="card-body w-full inter text-xl font-semibold gap-5">
                             {/* email */}
-                            <div className="form-control">
+                            <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                                <input type="email" name="email" placeholder="email" className="input input-bordered w-full" required />
                             </div>
                             {/* password */}
                             <div className="form-control">
@@ -98,21 +113,24 @@ const Login = () => {
                                 </label>
                             </div>
                             {/* recaptcha */}
-                            <div className="form-control">
-                                <label className="label">
+                            <div className="form-control gap-5">
+                                <label className="w-full ">
                                     <LoadCanvasTemplate />
                                 </label>
                                 <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="Type the text above" className="input input-bordered" />
-                                <button className='btn btn-outline btn-xs'>Validate</button>
+                                {/* <button className='btn btn-outline btn-xs'>Validate</button> */}
                             </div>
                             {/* submit btn 
                             TODO: Apply disabled for recaptcha*/}
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary" type="submit" value="Submit" />
+                                <input className="btn btn-primary bg-[#D1A054] text-white border-none" type="submit" value="Submit" disabled={disabled} />
                             </div>
                         </form>
-                        <p><small>New Here? <Link to="/signup">Create an account</Link></small></p>
-                        <SocialLogin></SocialLogin>
+                        <SocialLogin
+                            message={"New here?"}
+                            linkMessage="Create a New Account"
+                            isLogin={true}
+                        ></SocialLogin>
                     </div>
                 </div>
             </div>

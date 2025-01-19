@@ -1,5 +1,6 @@
 {
   "name": "richter-restaurant-client",
+  "proxy": "https://richter-restaurant-server-alzami12-al-zamis-projects.vercel.app",
   "private": true,
   "version": "0.0.0",
   "type": "module",

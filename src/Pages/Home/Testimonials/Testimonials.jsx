@@ -10,19 +10,17 @@ import '@smastrom/react-rating/style.css'
 
 import { Navigation } from 'swiper/modules';
 import { useEffect, useState } from "react";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import axios from "axios";
 
 
 const Testimonials = () => {
-
+    const axiosPublic = useAxiosPublic();
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
-            .then(res => res.json())
-            .then(data => {
-                setReviews(data)
-                console.log(data)
-            })
+        axiosPublic.get('/reviews')
+        .then(res => setReviews(res.data))
     }, [])
 
     return (

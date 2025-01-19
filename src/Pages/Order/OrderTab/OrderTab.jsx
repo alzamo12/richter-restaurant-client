@@ -12,7 +12,7 @@ const OrderTab = ({ menu, handlePrev, handleNext, currentPage }) => {
 
     return (
         <div>
-            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10 mx-5'>
                 {
                     items?.map(item => <FoodCard
                         item={item}
@@ -20,6 +20,7 @@ const OrderTab = ({ menu, handlePrev, handleNext, currentPage }) => {
                     </FoodCard>)
                 }
             </div>
+            {/* pagination button */}
             <div>
                 <div className="w-80 grid grid-cols-3 mt-12">
                     {/* previous button */}
@@ -30,7 +31,7 @@ const OrderTab = ({ menu, handlePrev, handleNext, currentPage }) => {
                         <FaArrowLeft></FaArrowLeft>
                     </button>
 
-                    <span className="mt-4">Page {currentPage} of {totalPages}</span>
+                    <span className="mt-4">{currentPage} / {totalPages}</span>
 
                     {/* next button  */}
                     <button

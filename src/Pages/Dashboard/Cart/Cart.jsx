@@ -7,7 +7,7 @@ import { Link } from "react-router";
 
 const MyCart = () => {
     const [cart, refetch] = useCart();
-    console.log(cart);
+    // console.log(cart);
     // how does reduce work!!!
     const total = cart.reduce((sum, item) => item.price + sum, 0);
     const axiosSecure = useAxiosSecure();

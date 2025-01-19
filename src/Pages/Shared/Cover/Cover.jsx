@@ -3,7 +3,7 @@ import './Cover.css'
 
 const Cover = ({ img, title, fontStyle, description }) => {
     return (
-        <div className='w-[99.5vw] left-1/2 right-1/2 relative -mx-[50vw] mb-8 lg:mb-24'>
+        <div className='w-[100vw] left-1/2 right-1/2 relative -mx-[50vw] mb-8 lg:mb-24'>
             <Parallax
                 blur={{ min: -50, max: 50 }}
                 bgImage={img}
@@ -11,7 +11,7 @@ const Cover = ({ img, title, fontStyle, description }) => {
                 strength={200}
             >
                 <div
-                    className={`hero h-[250px] lg:h-[700px] ${fontStyle}`}
+                    className={`hero h-[250px] lg:h-[85vh] ${fontStyle}`}
                 >
                     <div className="hero-overlay h-1/2 w-[80%] bg-black bg-opacity-60"></div>
                     <div className="hero-content text-neutral-content text-center brightness-150">

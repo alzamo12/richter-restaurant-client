@@ -11,9 +11,9 @@ import soupImg from '../../../assets/menu/soup-bg.jpg'
 
 const Menu = () => {
     const [menu] = useMenu();
-    console.log(menu)
+    // console.log(menu)
     const deserts = menu.filter(item => item.category === 'dessert');
-    console.log(deserts)
+//    / console.log(deserts)
     const salad = menu.filter(item => item.category === 'salad');
     const pizza = menu.filter(item => item.category === 'pizza');
     const soup = menu.filter(item => item.category === 'soup')

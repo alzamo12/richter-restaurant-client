@@ -30,11 +30,11 @@ const Order = () => {
 
     const currentTabFood = categories[tabIndex];
     const [prevTabFood, setPrevTabFood] = useState(currentTabFood); // use this to show data properly
-    const { data: menu = [] } = useQuery({
+    const { data: menu = [], isLoading } = useQuery({
         queryKey: ['menu', currentTabFood, currentPage],
         queryFn: async () => {
             const res = await axiosPublic.get(`/menu?category=${currentTabFood}&page=${currentPage}&limit=${5}`);
-            console.log('API Response:', res.data);
+            // console.log('API Response:', res.data);
             if (currentTabFood !== prevTabFood) {
                 // set current page 1 and prev food to current tab food 
                 setCurrentPage(1);
@@ -44,11 +44,16 @@ const Order = () => {
         }
     });
 
+    if (isLoading) {
+        return <span className="loading loading-spinner loading-lg absolute top-[50%] left-[50%]"></span>
+    }
+
     return (
-        <div>
+        <div className=''>
             <Helmet>
                 <title>Richter | Order Food</title>
             </Helmet>
+
             <Cover
                 img={orderCover}
                 fontStyle={`cover-text-class-header`}
@@ -56,7 +61,7 @@ const Order = () => {
                 description="Would you like tp try a dish"
             ></Cover>
             <Tabs defaultIndex={tabIndex} onSelect={(index) => { setTabIndex(index) }}>
-                <TabList className="uppercase flex gap-4 text-xl inter font-medium mb-10 mx-[35%]">
+                <TabList className="uppercase flex gap-4 text-xl inter font-medium mb-10 mx-[30%]">
                     {/* {
                         categories.map((tab, index) => <Tab key={index}
                             className={tabIndex === index ? 'active-tab' : ''}

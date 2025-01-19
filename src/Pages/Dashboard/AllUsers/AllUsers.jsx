@@ -11,11 +11,11 @@ const AllUsers = () => {
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users');
-            console.log(res.data)
+            // console.log(res.data)
             return res.data
         }
     });
-    console.log(users)
+    // console.log(users)
     const handleDelete = (user) => {
         Swal.fire({
             title: "Are you sure?",
@@ -36,12 +36,12 @@ const AllUsers = () => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            console.log(res.data)
+                            // console.log(res.data)
                             refetch()
                         }
                     })
                     .catch(error => {
-                        console.log(error)
+                        // console.log(error)
                     })
             }
         });

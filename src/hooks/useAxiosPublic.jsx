@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React from 'react';
 
+// const token = localStorage.getItem('access-token');
 const axiosPublic = axios.create({
-    baseURL: "http://localhost:5000/"
+    // baseURL: "https://richter-restaurant-server-alzami12-al-zamis-projects.vercel.app",
+    baseURL: 'http://localhost:5000',
+    // baseURL: 'https://richter-restaurant-server.vercel.app',
 })
-
 const useAxiosPublic = () => {
     return axiosPublic;
 };

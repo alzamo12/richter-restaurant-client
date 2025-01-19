@@ -9,7 +9,7 @@ import img6 from '../../../assets/home/06.png'
 import './Banner.css'
 const Banner = () => {
     return (
-        <div className="w-[99.5vw] lg:h-[95vh] relative left-1/2 right-1/2 -mx-[50vw]  ">
+        <div className="w-[100vw] lg:h-[95vh] relative left-1/2 right-1/2 -mx-[50vw]  ">
             <Carousel className="">
                 <div className="lg:h-[85vh]">
                     <img className="h-full" src={img1} />

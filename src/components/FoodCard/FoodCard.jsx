@@ -4,6 +4,9 @@ import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
+import { use } from "react";
+import { sendEmailVerification, sendSignInLinkToEmail } from "firebase/auth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const FoodCard = ({ item }) => {
 
@@ -12,34 +15,63 @@ const FoodCard = ({ item }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
-    const [, refetch] = useCart()
+    const axiosPublic = useAxiosPublic();
+    const [, refetch] = useCart();
+    const auth = useAuth();
     // console.log(location)
+    // console.log(user);
 
-    const handleAddToCart = food => {
-        // console.log(food, user.email)
+    const handleAddToCart = async(food) => {
         if (user && user.email) {
-            // TODO send item to the database
-            const cartItem = {
-                menuId: _id,
-                email: user.email,
-                name,
-                image,
-                price
+            // const {data:isValid} = await axiosSecure.get(`checkValid/${user.email}`);
+            if (user.emailVerified) {
+                const cartItem = {
+                    menuId: _id,
+                    email: user.email,
+                    name,
+                    image,
+                    price
+                }
+                axiosSecure.post('/carts', cartItem)
+                    .then(res => {
+                        // console.log(res.data)
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: `${name} added to your cart`,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            refetch()
+                        }
+                    })
             }
-            axiosSecure.post('/carts', cartItem)
-                .then(res => {
-                    // console.log(res.data)
-                    if (res.data.insertedId) {
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: `${name} added to your cart`,
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        refetch()
+            else {
+                Swal.fire({
+                    title: "Please Verify your email",
+                    text: "Please Login t add to the cart",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, Login"
+                }).then(async(result) => {
+                    if (result.isConfirmed) {
+                        const userInfo = {
+                            name: user.displayName,
+                            email: user.email,
+                            // uid: user.uid,
+                        }
+                    const res = await axiosSecure.get(`/sendMail?userInfo=${userInfo}`, {
+                        headers:{
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        alert('email sent')
                     }
-                })
+                });
+            }
         }
         else {
             Swal.fire({
@@ -59,10 +91,10 @@ const FoodCard = ({ item }) => {
         }
     }
     return (
-        <div className="card rounded-none bg-[#F3F3F3] w-96 shadow-xl mx-auto">
+        <div className="card rounded-none bg-[#F3F3F3] w-full shadow-xl mx-auto">
             <figure>
                 <img
-                className="w-full"
+                    className="w-full"
                     src={image}
                     alt="Shoes" />
             </figure>

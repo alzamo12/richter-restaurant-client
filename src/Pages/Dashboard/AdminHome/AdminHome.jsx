@@ -18,7 +18,7 @@ const AdminHome = () => {
     if(isLoading){
         return <span className="loading loading-dots loading-xs"></span>
     }
-    console.log(stats)
+    // console.log(stats)
     return (
         <div>
             <h2 className="text-3xl">

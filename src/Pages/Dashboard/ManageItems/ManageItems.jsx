@@ -9,7 +9,7 @@ const ManageItems = () => {
     const [menu, loading, refetch] = useMenu();
     const axiosSecure = useAxiosSecure();
     const handleDeleteItem = item => {
-        console.log(item._id)
+        // console.log(item._id)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -23,24 +23,24 @@ const ManageItems = () => {
                 if (result.isConfirmed) {
                     axiosSecure.delete(`/menu/${item._id}`)
                         .then(res => {
-                            console.log(res)
+                            // console.log(res)
                             if (res.data.deletedCount > 0) {
                                 Swal.fire({
                                     title: "Deleted!",
                                     text: "Your file has been deleted.",
                                     icon: "success"
                                 });
-                                console.log(res.data)
+                                // console.log(res.data)
                                 refetch()
                             }
                         })
                         .catch(error => {
-                            console.log(error)
+                            // console.log(error)
                         })
                 }
             })
     }//hd
-    console.log(menu)
+    // console.log(menu)
     return (
         <div>
             <SectionTitle
