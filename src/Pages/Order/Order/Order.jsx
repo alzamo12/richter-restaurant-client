@@ -49,7 +49,7 @@ const Order = () => {
     }
 
     return (
-        <div className=''>
+        <div className='w-auto mx-auto'>
             <Helmet>
                 <title>Richter | Order Food</title>
             </Helmet>
@@ -61,17 +61,12 @@ const Order = () => {
                 description="Would you like tp try a dish"
             ></Cover>
             <Tabs defaultIndex={tabIndex} onSelect={(index) => { setTabIndex(index) }}>
-                <TabList className="uppercase flex gap-4 text-xl inter font-medium mb-10 mx-[30%]">
-                    {/* {
-                        categories.map((tab, index) => <Tab key={index}
-                            className={tabIndex === index ? 'active-tab' : ''}
-                        >{tab}</Tab>)
-                    } */}
-                    <Tab selectedClassName='active-tab'>salad</Tab>
-                    <Tab selectedClassName='active-tab'>pizza</Tab>
-                    <Tab selectedClassName='active-tab'>soup</Tab>
-                    <Tab selectedClassName='active-tab'>dessert</Tab>
-                    <Tab selectedClassName='active-tab'>drink</Tab>
+                <TabList className="uppercase flex md:gap-4 md:text-xl inter font-medium md:mb-10 mb-5 xl:mx-[30%] lg:mx-[25%] xl:w-auto lg:w-auto max-w-xl mx-auto">
+                    <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>salad</Tab>
+                    <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>pizza</Tab>
+                    <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>soup</Tab>
+                    <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>dessert</Tab>
+                    <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>drink</Tab>
                 </TabList>
 
                 <TabPanel>

@@ -7,12 +7,36 @@ import useAdmin from "../../../hooks/useAdmin";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { sendEmailVerification } from "firebase/auth";
 import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
 
 const NavBar = () => {
+    const { user, logOut } = useAuth();
     const [isAdmin] = useAdmin();
-    const { user, logOut } = useContext(AuthContext);
-    const [userData, setUserData] = useState(null)
+    // const [userData, setUserData] = useState(null)
     const axiosPublic = useAxiosPublic();
+
+    const { data: userData } = useQuery({
+        queryKey: ['userData'],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/checkValid/${user?.email}`)
+            return res.data
+        }
+    })
+
+
+    // useEffect(() => {
+    //     if (user) {
+    //         fetch(`https://richter-restaurant-server.vercel.app/checkValid/${user?.email}`)
+    //             .then(res => res.json())
+    //             .then(data => {
+    //                 if (data) {
+    //                     setUserData(data)
+    //                 }
+    //             })
+    //     }
+    // }, [user])
+
 
     const handleLogout = () => {
         logOut()
@@ -22,28 +46,11 @@ const NavBar = () => {
             })
     };
 
-    // get the user data from database
-    useEffect(() => {
-        if (user) {
-            fetch(`https://richter-restaurant-server.vercel.app/checkValid/${user?.email}`)
-                .then(res => res.json())
-                .then(data => {
-                    if (data) {
-                        setUserData(data)
-                    }
-                })
-        }
-    }, [user])
-
     const handleVerify = async () => {
         if (user) {
-            if (user?.emailVerified) {
-                const res = await axiosPublic.put(`/user/${user?.email}`)
-                console.log(res)
-            }
-            else {
-                await sendEmailVerification(user)
-            }
+
+            const res = await axiosPublic.get(`/sendMail/${user?.email}`)
+            console.log(res)
         }
         else {
             Swal.fire({
@@ -64,10 +71,10 @@ const NavBar = () => {
             user && isAdmin ? <li><Link to="/dashboard/adminHome">Admin Home</Link></li> : <li><Link to="/dashboard/userHome">User Home</Link></li>
         }
         {
-        user ?
-            <><li><button onClick={handleLogout}>Sign Out <FaUserCircle className="text-2xl"></FaUserCircle></button></li></>
-            :
-            <><li><Link to="/login">Login <FaUserCircle className="text-2xl"></FaUserCircle></Link></li></>
+            user ?
+                <><li><button onClick={handleLogout}>Sign Out <FaUserCircle className="text-2xl"></FaUserCircle></button></li></>
+                :
+                <><li><Link to="/login">Login <FaUserCircle className="text-2xl"></FaUserCircle></Link></li></>
         }
     </>
 
@@ -99,7 +106,8 @@ const NavBar = () => {
                     <div className="flex">
                         <a className="btn btn-ghost text-2xl cinzel font-extrabold ">Richter Restaurant  </a>
                         {
-                            user?.emailVerified ? userData?.isValid ? '' : <button className="btn btn-primary bg-green-600 hover:bg-green-800 border-none text-white" onClick={handleVerify}>Confirm Verification</button> : <button className="btn btn-primary bg-red-600 text-white border-none hover:bg-red-800" onClick={handleVerify}>Verify</button>
+                            // user?.emailVerified ? userData?.isValid ? '' : <button className="btn btn-primary bg-green-600 hover:bg-green-800 border-none text-white" onClick={handleVerify}>Confirm Verification</button> : <button className="btn btn-primary bg-red-600 text-white border-none hover:bg-red-800" onClick={handleVerify}>Verify</button>
+                            user?.emailVerified === false ? <button className="btn btn-primary bg-red-600 text-white border-none hover:bg-red-800" onClick={handleVerify}>Verify</button> : userData?.isValid === false ? <button className="btn btn-primary bg-green-600 hover:bg-green-800 border-none text-white" onClick={handleVerify}>Confirm Verification</button> : ''
                         }
                     </div>
                 </div>

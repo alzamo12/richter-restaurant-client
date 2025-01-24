@@ -6,11 +6,12 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import signUpImg from '../../assets/others/authentication2.png'
 import './signUp.css'
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
-
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -21,7 +22,6 @@ const SignUp = () => {
     const axiosPublic = useAxiosPublic();
 
     const { createUser, updateUserProfile } = useContext(AuthContext);
-    const location = useLocation();
 
     const onSubmit = data => {
         // console.log()
@@ -35,9 +35,27 @@ const SignUp = () => {
                             email: data.email,
                             uid: loggedUser.uid
                         }
-                      axiosPublic.post('/users', userInfo)
+                        axiosPublic.post('/users', userInfo)
                             .then(res => {
                                 console.log(res.data)
+                                Swal.fire({
+                                    title: "You have Successfully Created an account",
+                                    showClass: {
+                                        popup: `
+                                                        animate__animated
+                                                        animate__fadeInUp
+                                                        animate__faster
+                                                      `
+                                    },
+                                    hideClass: {
+                                        popup: `
+                                                        animate__animated
+                                                        animate__fadeOutDown
+                                                        animate__faster
+                                                      `
+                                    }
+                                });
+                                navigate('/')
                             })
                     })
                     .catch(error => {

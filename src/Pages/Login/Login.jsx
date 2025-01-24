@@ -12,7 +12,7 @@ import loginImg from '../../assets/others/authentication2.png'
 const Login = () => {
     const captchaRef = useRef(null);
     const [disabled, setDisabled] = useState(true);
-    const { signIn } = useContext(AuthContext);
+    const { signIn, user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || '/';
@@ -30,7 +30,6 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                // console.log(user)
                 Swal.fire({
                     title: "You have Successfully Login",
                     showClass: {

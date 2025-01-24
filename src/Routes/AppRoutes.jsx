@@ -20,7 +20,8 @@ import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome';
 import Reservation from '../Pages/Dashboard/Rservation/Reservation';
 import MyBookings from '../Pages/Dashboard/MyBookings/MyBookings';
 import AddReview from '../Pages/Dashboard/AddReview/AddReview';
-import Verification from '../Pages/SignUp/Verification';
+
+import PublicRoute from './PublicRoute';
 
 export const router = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
             { path: 'history', element: <PaymentHistory /> },
             { path: 'reservation', element: <Reservation></Reservation> },
             { path: 'bookings', element: <MyBookings></MyBookings> },
-            {path: 'addReview', element: <AddReview></AddReview>},
+            { path: 'addReview', element: <AddReview></AddReview> },
             // admin Routes
             { path: 'adminHome', element: <AdminRoute><AdminHome /></AdminRoute> },
             { path: 'users', element: <AdminRoute><AllUsers /></AdminRoute> },
@@ -55,8 +56,7 @@ export const router = createBrowserRouter([
             },
         ],
     },
-    { path: 'login', element: <Login /> },
-    { path: 'signup', element: <SignUp /> },
-    {path: 'verifyEmail', element: <Verification/>}
+    { path: 'login', element: <PublicRoute><Login /> </PublicRoute> },
+    { path: 'signup', element: <PublicRoute> <SignUp /></PublicRoute> },
 ]);
 

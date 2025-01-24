@@ -6,7 +6,7 @@ import { Link, replace, useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const SocialLogin = ({message, linkMessage, isLogin}) => {
-    const { googleSignIn } = useContext(AuthContext);
+    const { googleSignIn, loading } = useContext(AuthContext);
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const location = useLocation();

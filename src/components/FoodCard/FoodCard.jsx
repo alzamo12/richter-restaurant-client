@@ -21,7 +21,7 @@ const FoodCard = ({ item }) => {
     // console.log(location)
     // console.log(user);
 
-    const handleAddToCart = async(food) => {
+    const handleAddToCart = async (food) => {
         if (user && user.email) {
             // const {data:isValid} = await axiosSecure.get(`checkValid/${user.email}`);
             if (user.emailVerified) {
@@ -56,19 +56,13 @@ const FoodCard = ({ item }) => {
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
                     confirmButtonText: "Yes, Login"
-                }).then(async(result) => {
+                }).then(async (result) => {
                     if (result.isConfirmed) {
                         const userInfo = {
                             name: user.displayName,
                             email: user.email,
                             // uid: user.uid,
                         }
-                    const res = await axiosSecure.get(`/sendMail?userInfo=${userInfo}`, {
-                        headers:{
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                        alert('email sent')
                     }
                 });
             }
