@@ -17,23 +17,23 @@ const MyBookings = () => {
         }
     });
 
-    
+
     // console.log(payments)
     return (
         <div>
-           
-            <div className="bg-[#F3F3F3] pt-16 h-[104vh]  md:-mt-10 ">
+
+            <div className="bg-[#F3F3F3] mx-1 md:pt-16 h-screen md:h-[104vh] -mt-5 pt-5  md:-mt-10 ">
                 <SectionTitle
                     subHeading="At a Glance!!!"
                     heading="Payment History"
                 ></SectionTitle>
-                <div className="overflow-x-auto bg-white px-20  h-[650px] mx-32 mt-10">
+                <div className="overflow-x-auto bg-white md:px-20  md:h-[650px] md:mx-32 mt-10">
                     <table className="table rounded-3xl my-10">
                         {/* head */}
                         <thead className="bg-[#D1A054] text-white rounded-3xl sticky top-0">
-                            <tr className="uppercase inter font-semibold text-[16px] rounded-3xl">
+                            <tr className="uppercase inter font-semibold text-[10px] md:text-[16px] rounded-3xl">
                                 <th className="py-9"></th>
-                                <th>Name</th>
+                                <th className=''>Name</th>
                                 <th>Guest</th>
                                 <th>Price</th>
                                 <th>Payent Date</th>
@@ -43,10 +43,10 @@ const MyBookings = () => {
                             {
                                 payments.map((payment, index) => <tr className="hover ">
                                     <th className="py-7">{index + 1}</th>
-                                    <td>{payment.name}</td>
-                                    <td>{payment.guest}</td>
-                                    <td>{payment.price}</td>
-                                    <td>{payment.orderedDate || payment.date}</td>
+                                    <td className='text-[12px] md:text-xl'>{payment.name}</td>
+                                    <td className='text-[12px] md:text-xl'>{payment.guest}</td>
+                                    <td className='text-[12px] md:text-xl'>{payment.price}</td>
+                                    <td className='text-[8px] md:text-xl'>{payment.orderedDate || payment.date}</td>
                                 </tr>)
                             }
                             {/* row 2 */}

@@ -87,13 +87,15 @@ const Login = () => {
                 <title>Richter | Login</title>
             </Helmet>
             <div className="hero min-h-screen auth-background">
-                <div className="hero-content px-28 shadow-2xl border-2 h-4/5 max-w-[85%] w-[85%] gap-[20%] flex-col md:flex-row">
-                    <div className="text-center md:w-1/2 lg:text-left">
-                       <img className='w-[100%]' src={loginImg} alt="" />
+                <div className="hero-content lg:px-20 md:shadow-2xl md:border-2 h-5/6 lg:max-w-[85%] md:w-3/4 lg:w-[85%] gap-[20%] flex-col md:flex-row">
+                    <div className="text-center lg:w-1/2 hidden lg:grid lg:text-left">
+                        <img className='w-[100%]' src={loginImg} alt="" />
                     </div>
-                    <div className="card md:w-1/2  ">
-                    <h2 className="text-4xl inter font-bold text-center">Login</h2>
-                        <form onSubmit={handleLogin} className="card-body w-full inter text-xl font-semibold gap-5">
+                    <div className="card w-full lg:w-1/2">
+                        <div>
+                            <h2 className="text-4xl inter font-bold text-center">Login</h2>
+                        </div>
+                        <form onSubmit={handleLogin} className="card-body w-full inter mb-0 mt-0 text-xl font-semibold">
                             {/* email */}
                             <div className="form-control w-full">
                                 <label className="label">
@@ -112,17 +114,17 @@ const Login = () => {
                                 </label>
                             </div>
                             {/* recaptcha */}
-                            <div className="form-control gap-5">
-                                <label className="w-full ">
-                                    <LoadCanvasTemplate />
+                            <div className="form-control grid gap-5">
+                                <label className="relative">
+                                    <LoadCanvasTemplate className="w-[300px] h-[100px] block mx-auto" />
                                 </label>
                                 <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="Type the text above" className="input input-bordered" />
                                 {/* <button className='btn btn-outline btn-xs'>Validate</button> */}
                             </div>
                             {/* submit btn 
                             TODO: Apply disabled for recaptcha*/}
-                            <div className="form-control mt-6">
-                                <input className="btn btn-primary bg-[#D1A054] text-white border-none" type="submit" value="Submit" disabled={disabled} />
+                            <div className="form-control mt-4 mb-0">
+                                <input className="btn btn-primary mb-0 bg-[#D1A054] text-white border-none" type="submit" value="Submit" disabled={disabled} />
                             </div>
                         </form>
                         <SocialLogin

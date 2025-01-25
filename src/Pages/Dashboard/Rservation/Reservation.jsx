@@ -41,12 +41,12 @@ const Reservation = () => {
     // console.log(selectedGuests)
 
     return (
-        <div className="mx-auto">
+        <div className="mx-auto p-5">
             <SectionTitle
                 heading="Book a table"
                 subHeading="reservation"
             ></SectionTitle>
-            <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-3 lg:w-2/3 mx-auto gap-5 inter font-semibold text-xl mt-10" action="">
+            <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-3 lg:w-2/3 mx-auto gap-5 inter font-semibold text-xl mt-10" action="">
                 {/* date */}
                 <div className="form-control">
                     <label className="label">

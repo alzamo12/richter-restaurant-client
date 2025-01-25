@@ -39,11 +39,11 @@ const MyCart = () => {
     }
 
     return (
-        <div className="w-full">
+        <div className="w-full h-screen">
 
             <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
-                <h3 className="text-3xl">Total Items: {cart.length}</h3>
-                <h3 className="text-3xl">Total Price: ${total}</h3>
+                <h3 className="text-xs md:text-3xl">Total Items: {cart.length}</h3>
+                <h3 className="text-xs md:text-3xl">Total Price: ${total}</h3>
                 {
                     cart.length ?
                         <Link to="/dashboard/payment">

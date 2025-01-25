@@ -36,7 +36,6 @@ const AuthProvider = ({ children }) => {
 
     const googleSignIn = () => {
         setLoading(true)
-        console.log('google', loading)
         return signInWithPopup(auth, googleProvider)
     }
 
@@ -44,9 +43,7 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
             if (currentUser) {
-                console.log(loading)
                 const userInfo = { email: currentUser?.email };
-                console.log('current user', currentUser.email)
                 axiosPublic.post('/jwt', userInfo)
                     .then((res) => {
                         if (res.data.token) {
@@ -62,7 +59,7 @@ const AuthProvider = ({ children }) => {
             }
             else {
                 localStorage.removeItem('access-token')
-                // setLoading(false)
+                setLoading(false)
             }
             // setLoading(false)
         })

@@ -83,15 +83,15 @@ const SignUp = () => {
             <Helmet>
                 <title>Richter | Sign Up</title>
             </Helmet>
-            <div className="hero min-h-screen auth-background">
-                <div className="hero-content max-w-[85%] w-[85%] px-28 shadow-2xl h-4/5 gap-[5%] flex-col lg:flex-row-reverse">
-                    <div className="text-center md:w-1/2 lg:text-left">
+            <div className="hero min-h-screen p-0 auth-background">
+                <div className="hero-content  md:max-w-[85%] w-full md:w-[85%] md:px-28 md:shadow-2xl h-4/5 md:gap-[5%] flex-col lg:flex-row-reverse">
+                    <div className="text-center hidden lg:grid md:w-1/2 lg:text-left">
                         <img className='w-[100%]' src={signUpImg} alt="" />
                     </div>
                     {/* form */}
-                    <div className="card  w-1/2 shrink-0">
+                    <div className="card w-full lg:w-1/2 shrink-0 p-0">
                         <h2 className="text-4xl inter font-bold text-center">Sign Up</h2>
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body w-3/4 mx-auto inter font-semibold text-xl">
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body p-0 w-full md:w-3/4 md:mx-auto inter font-semibold text-xl">
                             {/* name */}
                             <div className="form-control">
                                 <label className="label">
@@ -149,7 +149,7 @@ const SignUp = () => {
                                 </label>
                             </div>
                             {/* button or submit */}
-                            <div className="form-control mt-6">
+                            <div className="form-control mt-6 mb-5">
                                 {/* <button className="btn btn-primary">Login</button> */}
                                 <input className="btn btn-primary bg-[#D1A054] text-white border-none" type="submit" value="Submit" />
                             </div>

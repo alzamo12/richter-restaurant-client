@@ -50,7 +50,7 @@ const AddReview = () => {
                 subHeading="Sharing is Caring"
                 heading="Give a Review..."
             ></SectionTitle>
-            <div className="bg-[#F3F3F3] mt-10 mx-[10%] px-[10%] py-10">
+            <div className="bg-[#F3F3F3] mt-10 mx-[5%] md:mx-[10%] px-[5%] md:px-[10%] py-10">
                 <form onSubmit={handleSubmit(onSubmit)} className=" grid space-y-5" action="">
                     <div className="grid gap-5 w-full">
                         <h2 className="text-4xl cinzel font-medium uppercase text-[32px] mx-auto">Rate Us!</h2>

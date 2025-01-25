@@ -50,7 +50,7 @@ const SocialLogin = ({message, linkMessage, isLogin}) => {
 
     return (
        
-            <div className="text-center grid gap-3 inter font-medium ">
+            <div className="text-center grid gap-1 inter font-medium ">
                 <p className="text-[#D1A054]">{message} <Link to={isLogin ? '/signup' : '/login' }>{linkMessage}</Link></p>
                 <p>Or {isLogin ? 'sign in with' : 'sign up with'}</p>
                 <button onClick={handleGoogleSignIn} className="btn btn-outline w-12 h-12 mx-auto rounded-full p-4 ">
