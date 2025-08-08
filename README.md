@@ -1,5 +1,4 @@
-# Disco Zone Forum
-
+# Richter Restaurant
 ## Purpose
 
 A modern, responsive food selling website built with the MERN stack and Firebase authentication. Users can buy their favourite foods here.
