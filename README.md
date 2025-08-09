@@ -3,6 +3,9 @@
 
 A modern, responsive food selling website built with the MERN stack and Firebase authentication. Users can buy their favourite foods here.
 
+![Alt text describing the image](https://i.ibb.co.com/fzdxLPSV/Screenshot-170.png)
+
+
 ## Live Demo
 
 [View the live application here](https://richter-restaurant.web.app/)
