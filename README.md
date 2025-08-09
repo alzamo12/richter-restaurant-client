@@ -43,3 +43,47 @@ A modern, responsive food selling website built with the MERN stack and Firebase
 * handle Order on foods
 * Admin users have access to protected routes for moderation
 
+## 📦 Installation & Setup
+
+## 🖥 Run Locally — Step-by-Step
+
+### **Prerequisites**
+Make sure you have installed:
+- [Node.js](https://nodejs.org/) (v16+ recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- Any required services for the project (e.g., MongoDB, MySQL, Firebase, etc.)
+
+---
+### **1. Clone the repository**
+```bash
+git clone https://github.com/alzamo12/richter-restaurant-client
+cd richter-restaurant-client
+
+```
+## 🌱 Environment Variables
+Create a `.env` file in your project root:
+```env
+VITE_apiKey= firebase apikey
+VITE_authDomain= firebase auth domain
+VITE_projectId= firebase projectId
+VITE_storageBucket= firebase storageBucket
+VITE_messagingSenderId= firebase messaging sender id
+VITE_appId= firebase app id
+VITE_STRIPE_PUBLISHABLE_KEY== strip e publishable key
+
+```
+## Installation
+```
+npm install 
+or 
+nmp i
+
+```
+## run locally
+```
+npm run dev
+# or
+yarn dev
+
+
+
