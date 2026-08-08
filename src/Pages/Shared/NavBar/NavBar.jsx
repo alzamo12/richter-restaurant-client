@@ -104,10 +104,9 @@ const NavBar = () => {
                         </ul>
                     </div>
                     <div className="flex">
-                        <a className="btn btn-ghost text-2xl cinzel font-extrabold ">Richter Restaurant  </a>
+                        <a className="btn btn-ghost text-xl md:text-2xl cinzel font-extrabold ">Richter Restaurant  </a>
                         {
-                            // user?.emailVerified ? userData?.isValid ? '' : <button className="btn btn-primary bg-green-600 hover:bg-green-800 border-none text-white" onClick={handleVerify}>Confirm Verification</button> : <button className="btn btn-primary bg-red-600 text-white border-none hover:bg-red-800" onClick={handleVerify}>Verify</button>
-                            user?.emailVerified === false ? <button className="btn btn-primary bg-red-600 text-white border-none hover:bg-red-800" onClick={handleVerify}>Verify</button> : userData?.isValid === false ? <button className="btn btn-primary bg-green-600 hover:bg-green-800 border-none text-white" onClick={handleVerify}>Confirm Verification</button> : ''
+                            user?.emailVerified === false ? <button className="btn btn-primary bg-red-600 text-white border-none hover:bg-red-800" onClick={handleVerify}>Verify</button> : ''
                         }
                     </div>
                 </div>

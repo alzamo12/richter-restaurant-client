@@ -9,7 +9,7 @@ const Cover = ({ img, title, fontStyle, description }) => {
                 bgImage={img}
                 bgImageAlt="the dog"
                 strength={200}
-                className='lg:h-[80vh] md:h-[40vh] h-[35vh] grid md:inline'
+                className='lg:h-[80vh] md:h-[40vh] h-[25vh] grid md:inline'
             >
                 <div className={`hero h-full md:mt-[10%] lg:mt-[25vh] ${fontStyle}`}>
                     <div className="hero-overlay h-3/4 md:h-3/4 lg:h-full w-[80%] my-auto bg-black bg-opacity-60"></div>

@@ -156,7 +156,8 @@ const CheckoutForm = ({ data }) => {
                     ></CardElement>
                 </div>
                     
-                <input className='text-white text-xl btn  btn-primary mt-8 px-[20%] grid mx-auto' type='submit' disabled={!stripe || !clientSecret} value="submit" /> 
+                <input className='text-white text-xl btn  bg-[#D1A054] mt-8 px-[20%] hover:shadow-2xl hover:bg-[#D1A054]
+                 grid mx-auto' type='submit' disabled={!stripe || !clientSecret} value="submit" /> 
                 <p className='text-red-600 mt-5'>{errorMessage}</p>
                 {
                     transactionId && <p>Your transaction Id is: <span className='text-green-600'>{transactionId}</span></p>

@@ -16,12 +16,22 @@ const Dashboard = () => {
     }
 
     return (
-        <div className=" flex relative overflow-y-hidden">
-            <div className={isOpen? "md:w-64 w-auto min-h-screen lg:block bg-[#D1A054] z-10 absolute lg:relative" : "md:w-64 w-auto min-h-screen lg:block bg-[#D1A054] z-10 relative lg:relative"}>
-                <button className="w-6 md:hidden" onClick={handleNav}><FaMarsAndVenus></FaMarsAndVenus></button>
+        <div className=" flex relative">
+            <div className={isOpen ? "md:w-64 w-auto min-h-screen lg:block bg-[#D1A054] z-10 relative  lg:relative" : "md:w-64 w-auto min-h-screen lg:block bg-[#D1A054] z-10 relative lg:relative"}>
+                <button className="w-6 md:hidden" onClick={handleNav}> <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    className="inline-block h-5 w-5 stroke-current">
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg></button>
                 {
                     isOpen ?
-                        <ul className="menu p-4">
+                        <ul className="menu p-4 text-base gap-5">
                             {
                                 admin ?
                                     <>
@@ -48,10 +58,10 @@ const Dashboard = () => {
                             {/* <li><NavLink to="/dashboard/contact"><FaEnvelope></FaEnvelope>Contact</NavLink></li> */}
                         </ul> :
                         ''
-        }
+                }
 
             </div>
-            <div className="flex-1">
+            <div className="flex-1 overflow-auto">
                 <Outlet></Outlet>
             </div>
         </div>

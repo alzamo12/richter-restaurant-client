@@ -8,7 +8,7 @@ import { AuthContext } from "../providers/AuthProvider";
 const axiosSecure = axios.create({
   baseURL: 'https://richter-restaurant-server.vercel.app',
   // baseURL: 'http://localhost:5000',
-  
+
 })
 const useAxiosSecure = () => {
   const { logOut } = useContext(AuthContext);
@@ -27,16 +27,16 @@ const useAxiosSecure = () => {
   axiosSecure.interceptors.response.use(function (response) {
     // console.log(response)
     return response
-  }, 
-  // it will throw an error if the token is invalid
-  async(error) => {
-    const status = error.response.status;
-    if (status === 401 || status === 403) {
-     await logOut();
-     navigate('/login')
-    }
-    return Promise.reject(error)
-  })
+  },
+    // it will throw an error if the token is invalid
+    async (error) => {
+      const status = error.response.status;
+      if (status === 401 || status === 403) {
+        await logOut();
+        navigate('/login')
+      }
+      return Promise.reject(error)
+    })
   return axiosSecure
 };
 

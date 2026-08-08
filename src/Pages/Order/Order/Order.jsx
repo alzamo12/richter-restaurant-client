@@ -43,6 +43,7 @@ const Order = () => {
             return res.data
         }
     });
+    const tabLists = ['salad', 'pizza', 'soup', 'dessert', 'drink'];
 
     if (isLoading) {
         return <span className="loading loading-spinner loading-lg absolute top-[50%] left-[50%]"></span>
@@ -61,12 +62,24 @@ const Order = () => {
                 description="Would you like tp try a dish"
             ></Cover>
             <Tabs defaultIndex={tabIndex} onSelect={(index) => { setTabIndex(index) }}>
-                <TabList className="uppercase flex md:gap-4 md:text-xl inter font-medium md:mb-10 mb-5 xl:mx-[30%] lg:mx-[25%] xl:w-auto lg:w-auto max-w-xl mx-auto">
-                    <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>salad</Tab>
+                <TabList className="uppercase flex md:gap-4 md:text-xl inter font-medium md:mb-10 mb-5 xl:mx-[30%] 
+                lg:mx-[25%] xl:w-auto lg:w-auto max-w-xl mx-auto">
+                    {/* <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>salad</Tab>
                     <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>pizza</Tab>
                     <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>soup</Tab>
                     <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>dessert</Tab>
-                    <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>drink</Tab>
+                    <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>drink</Tab> */}
+                    {/* {tabLists.map} */}
+                    {
+                        tabLists.map(tab => <Tab
+                            className="w-1/5 text-center text-[15px]
+                            md:text-xl cursor-pointer"
+                            selectedClassName='active-tab'
+                            key={tab}
+                        >{tab}
+                        </Tab>)
+                        // </Tab>)
+                    }
                 </TabList>
 
                 <TabPanel>

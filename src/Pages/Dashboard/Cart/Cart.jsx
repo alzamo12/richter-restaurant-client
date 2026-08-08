@@ -4,7 +4,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router";
-
+import Table from "../../../components/table/Table";
 const MyCart = () => {
     const [cart, refetch] = useCart();
     // console.log(cart);
@@ -54,9 +54,8 @@ const MyCart = () => {
 
 
             </div>
-            <div className="overflow-x-auto w-full">
+            {/* <div className="overflow-x-auto w-full">
                 <table className="table w-full">
-                    {/* head */}
                     <thead>
                         <tr>
                             <th>#</th>
@@ -96,7 +95,49 @@ const MyCart = () => {
 
                     </tbody>
                 </table>
+            </div> */}
+            <div className="overflow-x-auto bg-white md:px-20 max-h-[70vh] lg:h-[650px] md:mx-32 mt-10">
+                <table className="table rounded-3xl my-10">
+                    {/* head */}
+                    <thead className="bg-[#D1A054] text-white rounded-3xl sticky top-0">
+                        <tr className="uppercase inter font-semibold text-xs md:text-[16px] rounded-3xl">
+                            <th>#</th>
+                            <th>Food</th>
+                            <th>Item Name</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody className="inter text-lg ">
+                        {
+                            cart.map((item, index) => <tr className="hover ">
+                                <th className="py-7">{index + 1}</th>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle h-12 w-12">
+                                                <img
+                                                    src={item.image}
+                                                    alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td className="">{item.name}</td>
+                                <td className="">${item.price}</td>
+                                <th>
+                                    <button onClick={() => handleDelete(item._id)} className="btn btn-ghost btn-xs"><FaTrashAlt></FaTrashAlt> Delete</button>
+                                </th>
+
+                            </tr>)
+                        }
+                        {/* row 2 */}
+
+
+                    </tbody>
+                </table>
             </div>
+
         </div>
     );
 };
