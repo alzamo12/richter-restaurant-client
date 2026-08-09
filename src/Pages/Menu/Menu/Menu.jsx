@@ -13,7 +13,7 @@ const Menu = () => {
     const [menu] = useMenu();
     // console.log(menu)
     const deserts = menu.filter(item => item.category === 'dessert');
-//    / console.log(deserts)
+    //    / console.log(deserts)
     const salad = menu.filter(item => item.category === 'salad');
     const pizza = menu.filter(item => item.category === 'pizza');
     const soup = menu.filter(item => item.category === 'soup')
@@ -32,10 +32,12 @@ const Menu = () => {
                 subHeading="Don't Miss"
                 heading="Today's Offer"
             ></SectionTitle>
-            
+
             {/* offered */}
             <MenuCategory
-                items={offered}>
+                items={offered}
+                category={'offered'}
+            >
             </MenuCategory>
 
             {/* salads */}
@@ -44,6 +46,7 @@ const Menu = () => {
                 title={"salad"}
                 items={salad}
                 description="Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                category={'salad'}
             ></MenuCategory>
 
             {/* Pizza */}
@@ -52,12 +55,14 @@ const Menu = () => {
                 title={"pizza"}
                 items={pizza}
                 description="Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                category={'pizza'}
             ></MenuCategory>
 
             {/* desserts */}
             <MenuCategory
                 img={dessertImg}
                 title={"dessert"}
+                category={'dessert'}
                 items={deserts}
                 description="Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
             ></MenuCategory>
@@ -66,6 +71,7 @@ const Menu = () => {
             <MenuCategory
                 img={soupImg}
                 title={"soup"}
+                category={'soup'}
                 items={soup}
                 description="Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
             ></MenuCategory>

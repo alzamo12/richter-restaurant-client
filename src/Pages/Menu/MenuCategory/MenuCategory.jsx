@@ -3,7 +3,7 @@ import Cover from "../../Shared/Cover/Cover";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
 import CenteredBtn from "../../../components/CenteredBtn/CenteredBtn";
 
-const MenuCategory = ({ items, img, title, description }) => {
+const MenuCategory = ({ items, img, title, description , category }) => {
     return (
         <div className="pt-8">
             {title ? <Cover img={img} title={title} description={description} fontStyle={`cover-text-class-food`}></Cover> : null}
@@ -16,7 +16,7 @@ const MenuCategory = ({ items, img, title, description }) => {
                     ></MenuItem>)
                 }
             </div>
-            <Link to={`/order/${title}`}>
+            <Link to={`/order/${category}`}>
                 <CenteredBtn buttonText="Order your favorite food"></CenteredBtn>
             </Link>
         </div>

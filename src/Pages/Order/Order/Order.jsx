@@ -14,7 +14,7 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const Order = () => {
     const axiosPublic = useAxiosPublic();
-    const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks'];
+    const categories = ['offered', 'salad', 'pizza', 'soup', 'dessert', 'drinks'];
     const { category } = useParams();
     const initialIndex = categories.indexOf(category);
     const [tabIndex, setTabIndex] = useState(initialIndex);
@@ -43,7 +43,7 @@ const Order = () => {
             return res.data
         }
     });
-    const tabLists = ['salad', 'pizza', 'soup', 'dessert', 'drink'];
+    // const tabLists = ['offered', 'salad', 'pizza', 'soup', 'dessert', 'drink'];
 
     // if (isLoading) {
     //     return <span className="loading loading-spinner loading-lg absolute top-[50%] left-[50%]"></span>
@@ -69,22 +69,22 @@ const Order = () => {
                     onSelect={(index) => { setTabIndex(index) }}
                     className="min-h-[50vh] relative"
                 >
-                    <TabList className="uppercase flex md:gap-4 md:text-xl inter font-medium md:mb-10 mb-5 xl:mx-[30%] 
+                    <TabList className="uppercase flex md:gap-8 md:text-xl inter font-medium md:mb-10 mb-5 xl:mx-[30%] 
                                         lg:mx-[25%] xl:w-auto lg:w-auto max-w-xl mx-auto"
                     >
                         {
-                            tabLists.map(tab => <Tab
-                                className="w-1/5 text-center text-[15px]
+                            categories.map(category => <Tab
+                                className="w-full text-center text-[15px]
                             md:text-xl cursor-pointer"
                                 selectedClassName='active-tab'
-                                key={tab}
-                            >{tab}
+                                key={category}
+                            >{category}
                             </Tab>)
                         }
                     </TabList>
                     {
-                        tabLists.map(tab => <TabPanel
-                            key={tab}
+                        categories.map(category => <TabPanel
+                            key={category}
                         >
                             <OrderTab
                                 menu={menu}
