@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import orderCover from '../../../assets/shop/banner2.jpg'
 import Cover from '../../Shared/Cover/Cover';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -45,12 +45,12 @@ const Order = () => {
     });
     const tabLists = ['salad', 'pizza', 'soup', 'dessert', 'drink'];
 
-    if (isLoading) {
-        return <span className="loading loading-spinner loading-lg absolute top-[50%] left-[50%]"></span>
-    }
+    // if (isLoading) {
+    //     return <span className="loading loading-spinner loading-lg absolute top-[50%] left-[50%]"></span>
+    // }
 
     return (
-        <div className='w-auto mx-auto'>
+        <div className='w-auto mx-auto relative'>
             <Helmet>
                 <title>Richter | Order Food</title>
             </Helmet>
@@ -61,43 +61,42 @@ const Order = () => {
                 title="Our Food"
                 description="Would you like tp try a dish"
             ></Cover>
-            <Tabs defaultIndex={tabIndex} onSelect={(index) => { setTabIndex(index) }}>
-                <TabList className="uppercase flex md:gap-4 md:text-xl inter font-medium md:mb-10 mb-5 xl:mx-[30%] 
-                lg:mx-[25%] xl:w-auto lg:w-auto max-w-xl mx-auto">
-                    {/* <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>salad</Tab>
-                    <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>pizza</Tab>
-                    <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>soup</Tab>
-                    <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>dessert</Tab>
-                    <Tab className="w-1/5 text-center text-[15px] md:text-xl" selectedClassName='active-tab'>drink</Tab> */}
-                    {/* {tabLists.map} */}
-                    {
-                        tabLists.map(tab => <Tab
-                            className="w-1/5 text-center text-[15px]
+            <Suspense
+                // fallback={<span className="loading loading-spinner loading-lg  absolute top-[50%] left-[50%]"></span>}
+            >
+                <Tabs
+                    defaultIndex={tabIndex}
+                    onSelect={(index) => { setTabIndex(index) }}
+                    className="min-h-[50vh] relative"
+                >
+                    <TabList className="uppercase flex md:gap-4 md:text-xl inter font-medium md:mb-10 mb-5 xl:mx-[30%] 
+                                        lg:mx-[25%] xl:w-auto lg:w-auto max-w-xl mx-auto"
+                    >
+                        {
+                            tabLists.map(tab => <Tab
+                                className="w-1/5 text-center text-[15px]
                             md:text-xl cursor-pointer"
-                            selectedClassName='active-tab'
+                                selectedClassName='active-tab'
+                                key={tab}
+                            >{tab}
+                            </Tab>)
+                        }
+                    </TabList>
+                    {
+                        tabLists.map(tab => <TabPanel
                             key={tab}
-                        >{tab}
-                        </Tab>)
-                        // </Tab>)
+                        >
+                            <OrderTab
+                                menu={menu}
+                                isLoading={isLoading}
+                                currentPage={currentPage}
+                                handlePrev={handlePrev}
+                                handleNext={handleNext}
+                            ></OrderTab>
+                        </TabPanel>)
                     }
-                </TabList>
-
-                <TabPanel>
-                    <OrderTab menu={menu} currentPage={currentPage} handlePrev={handlePrev} handleNext={handleNext}></OrderTab>
-                </TabPanel>
-                <TabPanel>
-                    <OrderTab menu={menu} currentPage={currentPage} handlePrev={handlePrev} handleNext={handleNext}></OrderTab>
-                </TabPanel>
-                <TabPanel>
-                    <OrderTab menu={menu} currentPage={currentPage} handlePrev={handlePrev} handleNext={handleNext}></OrderTab>
-                </TabPanel>
-                <TabPanel>
-                    <OrderTab menu={menu} currentPage={currentPage} handlePrev={handlePrev} handleNext={handleNext}></OrderTab>
-                </TabPanel>
-                <TabPanel>
-                    <OrderTab menu={menu} currentPage={currentPage} handlePrev={handlePrev} handleNext={handleNext}></OrderTab>
-                </TabPanel>
-            </Tabs>
+                </Tabs>
+            </Suspense>
         </div>
 
     );

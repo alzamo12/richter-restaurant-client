@@ -2,13 +2,16 @@ import { useState } from "react";
 import FoodCard from "../../../components/FoodCard/FoodCard";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
-const OrderTab = ({ menu, handlePrev, handleNext, currentPage }) => {
+const OrderTab = ({ menu, handlePrev, handleNext, currentPage, isLoading }) => {
     // const [currentPage, setCurrentPage] = useState(1);
     const items = menu.result
     const itemsPerPage = 5;
 
     // calculate total pages from the data
     const totalPages = Math.ceil(menu.total / itemsPerPage) || 1;
+    if (isLoading) {
+        return <span className="loading loading-spinner loading-lg absolute top-[50%] left-[50%]"></span>
+    }
 
     return (
         <div className="mx-5">
