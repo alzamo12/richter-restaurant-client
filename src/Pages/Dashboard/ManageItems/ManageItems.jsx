@@ -47,9 +47,8 @@ const ManageItems = () => {
                 heading="manage all items"
                 subHeading="Hurry Up"
             ></SectionTitle>
-            <div className="overflow-x-auto">
+            {/* <div className="overflow-x-auto">
                 <table className="table">
-                    {/* head */}
                     <thead>
                         <tr>
                             <th>
@@ -101,6 +100,69 @@ const ManageItems = () => {
                                 </td>
                             </tr>)
                         }
+                    </tbody>
+                </table>
+            </div> */}
+            <div className="overflow-x-auto bg-white md:px-20 max-h-[70vh] lg:h-[650px] md:mx-32 mt-10">
+                <table className="table rounded-3xl my-10">
+                    {/* head */}
+                    <thead className="bg-[#D1A054] text-white rounded-3xl 
+                    sticky top-0 z-30">
+                        <tr className="uppercase inter font-semibold text-xs md:text-[16px] rounded-3xl">
+                            <th>
+                                <label>
+                                    <input type="checkbox" className="checkbox" />
+                                </label>
+                            </th>
+                            <th>Item Image</th>
+                            <th>Item Name</th>
+                            <th>Price</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody className="inter text-lg ">
+                        {
+                            menu.map((item, index) => <tr
+                            className="hover"
+                            key={item._id}>
+                                <th>
+                                    {index + 1}
+                                </th>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle h-12 w-12">
+                                                <img
+                                                    src={item.image}
+                                                    alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {item.name}
+                                </td>
+                                <td>${item.price}</td>
+                                <td>
+                                    <Link to={`/dashboard/update/${item._id}`}>
+                                        <button>
+                                            <FaEdit></FaEdit>
+                                        </button>
+                                    </Link>
+                                </td>
+                                <td>
+                                    <button
+                                        onClick={() => handleDeleteItem(item)}
+                                        className="btn  bg-red-600 text-white border-none">
+                                        <FaTrashAlt></FaTrashAlt>
+                                    </button>
+                                </td>
+                            </tr>)
+                        }
+                        {/* row 2 */}
+
+
                     </tbody>
                 </table>
             </div>

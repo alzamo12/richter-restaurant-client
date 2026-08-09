@@ -48,9 +48,14 @@ const AddItems = () => {
                 subHeading="what's new"
             ></SectionTitle>
             <div>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className="w-full md:w-2/3 mx-auto p-5 border-2 border-gray-300
+                     rounded-lg shadow-lg mt-8 md:mt-16 font-bold
+                     "
+                >
                     {/* recipe name */}
-                    <label className="form-control w-full my-6">
+                    <label className="form-control w-full md:my-8">
                         <div className="label">
                             <span className="label-text">Recipe Name</span>
                         </div>
@@ -61,9 +66,9 @@ const AddItems = () => {
                             className="input input-bordered w-full " />
                     </label>
                     {/* category & price div */}
-                    <div className="flex  gap-6">
+                    <div className="flex  gap-6 md:my-8">
                         {/* category */}
-                        <div className="form-control w-full my-6">
+                        <div className="form-control w-full ">
                             <label htmlFor="" className="label">
                                 <span className="label-text">Category</span>
                             </label>
@@ -78,7 +83,7 @@ const AddItems = () => {
                             </select>
                         </div>
                         {/* price */}
-                        <div className="form-control w-full my-6">
+                        <div className="form-control w-full ">
                             <div className="label">
                                 <span className="label-text">Price</span>
                             </div>
@@ -90,7 +95,7 @@ const AddItems = () => {
                         </div>
                     </div>
                     {/* recipe details */}
-                    <label className="form-control">
+                    <label className="form-control md:my-8">
                         <div className="label">
                             <span className="label-text">Your bio</span>
                             <span className="label-text-alt">Alt label</span>
@@ -113,7 +118,7 @@ const AddItems = () => {
                             className="file-input w-full max-w-xs" />
                     </div>
                     {/* submit */}
-                    <button className="btn mt-2">Add Item <FaUtensils></FaUtensils></button>
+                    <button className="btn mt-2 bg-secondary  border-none text-white w-full max-w-xs mt-5">Add Item <FaUtensils></FaUtensils></button>
                 </form>
             </div>
         </div>

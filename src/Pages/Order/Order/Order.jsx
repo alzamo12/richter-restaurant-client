@@ -70,11 +70,11 @@ const Order = () => {
                     className="min-h-[50vh] relative"
                 >
                     <TabList className="uppercase flex md:gap-8 md:text-xl inter font-medium md:mb-10 mb-5 xl:mx-[30%] 
-                                        lg:mx-[25%] xl:w-auto lg:w-auto max-w-xl mx-auto"
+                                        lg:mx-[25%] xl:w-auto lg:w-auto  max-w-xl md:mx-auto mx-2"
                     >
                         {
                             categories.map(category => <Tab
-                                className="w-full text-center text-[15px]
+                                className="w-full text-xs md:w-full text-center text-[15px]
                             md:text-xl cursor-pointer"
                                 selectedClassName='active-tab'
                                 key={category}
