@@ -80,8 +80,10 @@ const Dashboard = () => {
             <div className="drawer lg:drawer-open h-screen overflow-hidden">
                 <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col h-screen overflow-hidden">
+                    {/* <div className="w-screen bg-primary h-12 block lg:hidden"> */}
                     <label htmlFor="my-drawer"
-                        className="btn text-secondary border-none shadow-none drawer-button absolute left-0 top-0 lg:hidden"
+                        className="btn text-white bg-primary px-4 py-4 rounded-full
+                             font-bold border-none shadow-none drawer-button absolute left-1 top-1 lg:hidden"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +97,8 @@ const Dashboard = () => {
                                 d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </label>
-                    <div className="flex-1 overflow-auto">
+                    {/* </div> */}
+                    <div className="flex-1 overflow-auto mt-16 md:mt-10 lg:mt-auto mx-2 lg:mx-0">
                         <Outlet></Outlet>
                     </div>
                 </div>

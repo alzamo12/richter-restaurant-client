@@ -104,7 +104,7 @@ const ManageItems = () => {
                 </table>
             </div> */}
             <div className="overflow-x-auto bg-white md:px-20 max-h-[70vh] lg:h-[650px] md:mx-32 mt-10">
-                <table className="table rounded-3xl my-10">
+                <table className="table rounded-3xl">
                     {/* head */}
                     <thead className="bg-[#D1A054] text-white rounded-3xl 
                     sticky top-0 z-30">

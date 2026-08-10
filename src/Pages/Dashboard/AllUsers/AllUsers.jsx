@@ -76,28 +76,40 @@ const AllUsers = () => {
     }
 
     return (
-        <div>
-            <h2 className="text-3xl">All Users</h2>
-            <h2 className="text-3xl">Total Users: {users.length}</h2>
-            <div className="overflow-x-auto">
-                <table className="table table-zebra">
+        <div className="md:mx-20 lg:mx-44 mt-5 md:mt-10">
+            {/* <h2 className="text-3xl">All Users</h2>
+            <h2 className="text-3xl">Total Users: {users.length}</h2> */}
+            <div className="w-full grid">
+                <div className="stats shadow border border-primary mx-auto">
+                    <div className="stat text-center">
+                        <div className="stat-title">Total Estimated Users</div>
+                        <div className="stat-value">{users?.length}</div>
+                        <div className="stat-desc">21% more than last month</div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="overflow-x-auto bg-white max-h-[70vh] lg:h-[650px] mt-10 lg:mt-20">
+                <table className="table rounded-3xl h-full">
                     {/* head */}
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>email</th>
+                    <thead className="bg-[#D1A054] text-white rounded-3xl 
+                    sticky top-0 z-30">
+                        <tr className="uppercase inter font-semibold text-xs md:text-[16px] rounded-3xl">
+                            <th className="hidden md:table-cell">#</th>
+                            <th className="hidden md:table-cell">Name</th>
+                            <th >email</th>
                             <th>Action</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {/* row 1 */}
+                    <tbody className="inter text-lg ">
                         {
-                            users.map((user, index) => <tr>
-                                <th>{index + 1}</th>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
+                            users.map((user, index) => <tr
+                                className="hover"
+                                key={user._id}>
+                                <td className="hidden md:table-cell">{index + 1}</td>
+                                <td className="hidden md:table-cell">{user.name}</td>
+                                <td>{user.email.split('@')[0]}</td>
                                 <td>
                                     {user.role === 'admin' ? 'Admin' :
                                         <button
@@ -117,6 +129,8 @@ const AllUsers = () => {
                                 </td>
                             </tr>)
                         }
+                        {/* row 2 */}
+
 
                     </tbody>
                 </table>
